@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <Title> Loan Application Approval System</Title>
+    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="jquery-ui.min.css"><!--jquery-ui-1.12.1/-->
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Lobster&display=swap') repeat scroll 0 0 rgba(0,
+        0,
+        0,
+        0);
+        body {
+            background: #fff;
+        }
+        
+        .title {
+            font-size: 5.6rem;
+            font-family: 'Lobster', cursive;
+        }
+        
+        .wrapper {
+            background: url("https://images.unsplash.com/photo-1465146633011-14f8e0781093?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3450&q=80");
+            color: #eee;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 1000px;
+            perspective-origin: 50% 50%;
+            animation: animation 100s linear infinite;
+        }
+        
+        @keyframes animation {
+            100% {
+                background-position: 0px -3000px;
+            }
+        }
+    </style>
+</head>
+
+
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<!--<script type="text/javascript" src="/jquery-ui-1.12.1/external/jquery/jquery.js"></script>-->
+<script type="text/javascript" src="/jquery-ui-1.12.1/jquery-ui.min.js"></script> <!---->
+<!--<script type="text/javascript" src="/js/datepicker.js"></script>-->
+<script>
+$(function(){
+    $("#datepicker").datepicker();
+});
+</script>
+<body class="wrapper">
+  
+    <div class="container">
+        <h2>Customer Details</h2>
+        <form action="form" method="POST">
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" required class="form-control" id="firstName" name="firstName">
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" required class="form-control" id="lastName" name="lastName">
+            </div>
+            <div class="form-group">
+                <label for="age">Age</label>
+                <input type="number" required class="form-control" id="age" name="age">
+            </div>
+            <div class="form-group">
+                <label for="creditScore">Credit Score</label>
+                <input type="number" max="1000" required class="form-control" id="creditScore" name="creditScore">
+            </div>
+            <div class="ui-tabs-panel ui-widget-content ui-corner-bottom" id="datePickerTab" role="tabpanel" aria-hidden="false">
+                <label for="datepicker">Enter your tax return filing date</label>
+                <input type="text" id="datepicker" required class="form-control" class="hasDatepicker">
+            </div>
+            
+            <!--<div id="ui-datepicker-div" class="ui-datepicker ui-widget-content ui-helper-clearfix ui-corner-all" style="position: absolute; top:252.906px; left:37.1406px; z-index:1; display: block;">
+            </div>-->
+            <br>
+                <div class="form-group">
+                <label for="loanAmount">Loan Amount</label>
+                <input type="number" max="10000000" required class="form-control" id="loanAmount" name="loanAmount">
+            </div>
+            <div class="form-group">
+                <label for="annualIncome">Annual Income</label>
+                <input type="number" required class="form-control" id="annualIncome" name="annualIncome">
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+            <div style="float: right">
+            <a href="http://localhost:3000/login"><button type="submit" class= "btn btn-default"> Log Out </button></a>
+             </div>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+        }
+        
+        canvas {
+            background-color: rgba(204, 204, 204, 0.801);
+            margin-left: 1100px;
+        }
+        
+        .bg {
+            background-image: url("http://rdcnewscdn.realtor.com/wp-content/uploads/2014/09/pre-approval.gif");
+            height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        #anim {
+            width: 300px;
+            height: 300px;
+            position: relative;
+            background: rgba(233, 222, 222, 0);
+        }
+        
+        #animate {
+            background-image: url('https://i.pinimg.com/originals/36/69/9c/36699c020cdc05f9cdc47b419401f872.png');
+            width: 260px;
+            height: 260px;
+            position: absolute;
+            background-color: rgba(230, 213, 213, 0);
+        }
+
+        #proceednext{
+            margin-left: 50px;
+            margin-right: 50px;
+        }
+    </style>
+    <script type="text/javascript">
+        function draw() {
+            var canvas = document.getElementById('canvas');
+            if (canvas.getContext) {
+                //circle  
+                var ctx = canvas.getContext('2d');
+                var centerX = canvas.width / 2;
+                var centerY = canvas.height / 2;
+                var radius = 90;
+                //draw circle
+                ctx.beginPath();
+                ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+                ctx.fillStyle = 'green';
+                ctx.fill();
+                ctx.lineWidth = 5;
+                ctx.strokeStyle = '#fff';
+                ctx.stroke();
+
+                //draw tick
+                ctx.beginPath();
+                ctx.moveTo(125, 150);
+                ctx.lineTo(150, 175);
+                ctx.lineTo(200, 125);
+                ctx.lineWidth = 20;
+                ctx.strokeStyle = '#fff';
+                ctx.stroke();
+            }
+        }
+
+        function myMove() {
+            var container = document.getElementById("anim");
+            var elem = document.getElementById("animate");
+            var id = setInterval(frame, 5);
+            var maxDistToTravel = container.offsetWidth - elem.offsetWidth; // container width - red box width
+            var pos = 0;
+            var end = maxDistToTravel;
+            var direction = 1;
+
+            function frame() {
+                if (pos === end) {
+                    direction *= -1; // reverses current direction
+                    end = Math.abs(maxDistToTravel - end);
+                }
+                pos += direction;
+                elem.style.top = pos + "px";
+                elem.style.left = pos + "px";
+            }
+        }
+    </script>
+</head>
+
+<body onload="draw();myMove();">
+    <div style="float: right">
+        <a href="http://localhost:3000/login">
+            <button type="submit" class= "btn btn-default"> Log Out </button>
+        </a>
+    </div>
+    <div class="bg"><br>
+        <center>
+            <h1>
+                <font color='green'>
+                    Credit score meets the requirement!! :)
+            </h1>
+            </font>
+        </center>
+        <div id="anim">
+            <div id="animate">
+            </div>
+        </div>
+        <div id="proceednext" style="float: centre">
+            <center>
+                <a href="http://localhost:3000/ajaxpage">
+                    <button type="submit" class= "btn btn-default"> Proceed Next </button>
+                </a>
+            </center>
+        </div>
+        <canvas id="canvas" height="300" width="300">
+            <p>Canvas not supported!</p>
+        </canvas>
+
+    </div>
+    
+</body>
+
+</html>

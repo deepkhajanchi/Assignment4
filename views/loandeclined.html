@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+        }
+        
+        canvas {
+            background-color: rgba(204, 204, 204, 0);
+            width: 250px;
+            margin-left: 90px;
+        }
+        
+        .bg {
+            background-image: url("https://i1.wp.com/financebuddha.com/blog/wp-content/uploads/2016/11/07124435/personal-loan-application-declined.jpg?fit=3872%2C2592&ssl=1");
+            height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        #anim {
+            width: 350px;
+            height: 350px;
+            position: relative;
+            background: rgba(233, 222, 222, 0);
+            margin-left: 1150px;
+        }
+        
+        #animate {
+            background-image: url('https://pbs.twimg.com/profile_images/2663452000/69f3b5573abfc74fb082862fe9c7891b.jpeg');
+            width: 250px;
+            height: 250px;
+            position: absolute;
+            background-color: rgba(230, 213, 213, 0);
+        }
+    </style>
+    <script>
+        function draw() {
+            var canvas = document.getElementById('canvas');
+            if (canvas.getContext) {
+                //circle  
+                var ctx = canvas.getContext('2d');
+                var centerX = canvas.width / 2;
+                var centerY = canvas.height / 2;
+                var radius = 90;
+                //draw circle
+                ctx.beginPath();
+                ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+                ctx.fillStyle = 'red';
+                ctx.fill();
+                ctx.lineWidth = 5;
+                ctx.strokeStyle = '#fff';
+                ctx.stroke();
+
+                //draw X
+                ctx.beginPath();
+                ctx.moveTo(95, 200);
+                ctx.lineTo(200, 100);
+                ctx.lineWidth = 20;
+                ctx.strokeStyle = '#fff';
+                ctx.stroke();
+                ctx.stroke();
+
+
+                ctx.beginPath();
+                ctx.moveTo(100, 100);
+                ctx.lineTo(200, 200);
+                ctx.lineWidth = 20;
+                ctx.strokeStyle = '#fff';
+                ctx.stroke();
+            }
+        }
+
+        function myMove() {
+            var container = document.getElementById("anim");
+            var elem = document.getElementById("animate");
+            var id = setInterval(frame, 30);
+            var maxDistToTravel = container.offsetWidth - elem.offsetWidth; // container width - red box width
+            var pos = 0;
+            var end = maxDistToTravel;
+            var direction = 1;
+
+            function frame() {
+                if (pos === end) {
+                    direction *= -1; // reverses current direction
+                    end = Math.abs(maxDistToTravel - end);
+                }
+                pos += direction;
+                elem.style.top = pos + "px";
+                elem.style.left = pos + "px";
+            }
+        }
+    </script>
+</head>
+
+<body onload="draw();myMove();">
+        <div style="float: right">
+                <a href="http://localhost:3000/login">
+                    <button type="submit" class= "btn btn-default"> Log Out </button>
+                </a>
+            </div>
+    <div class="bg"><br>
+        <center>
+            <h1>
+                <font color='Red'>Sorry!..Credit score is below the threshold!</h1>
+            </font>
+        </center>
+        <div>
+            <canvas id="canvas" height="300" width="300">
+                        <p>Canvas not supported!</p>
+            </canvas>
+            <div id="anim">
+                <div id="animate">
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>
