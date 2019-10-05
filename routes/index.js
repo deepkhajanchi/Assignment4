@@ -16,9 +16,11 @@ router.post('/home',ctrlMain.post_home);
 router.get('/form',ctrlMain.get_custDetails);
 router.post('/form',ctrlMain.post_custDetails);
 router.get('/ajaxpage',ctrlMain.get_ajaxpage);
-//router.post('/ajaxpage',ctrlMain.get_ajaxpage);
-//router.post('/loanApproved',ctrlMain.post_loanApproved);
+router.post('/ajaxpage',ctrlMain.get_ajaxpage);
+router.get('/dragndrop',ctrlMain.get_dragNDrop);
 //router.get('/ajaxtabpage',ctrlMain.get_ajaxtabpage);
-//router.post('/ajaxtabpage',ctrlMain.post_ajaxtabpage);
+router.post('/dragndrop',ctrlMain.post_dragNDrop);
+router.get('/installmentDate',ctrlMain.get_installmentDate);
+router.post('/installmentDate',ctrlMain.post_installmentDate);
 
 module.exports = router;
